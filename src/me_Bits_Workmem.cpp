@@ -45,13 +45,13 @@ TBool me_Bits_Workmem::SetBit(
 {
   using
     me_WorkMemory::GetByte,
-    me_Bits::SetBit,
+    me_Bits::SetBitTo,
     me_WorkMemory::SetByte;
 
   TUint_1 ByteValue;
 
   if (!GetByte(&ByteValue, ByteAddress)) return false;
-  if (!SetBit(&ByteValue, BitOffset, BitValue)) return false;
+  if (!SetBitTo(&ByteValue, BitOffset, BitValue)) return false;
   if (!SetByte(ByteValue, ByteAddress)) return false;
 
   return true;
@@ -67,13 +67,13 @@ TBool me_Bits_Workmem::SetBitToOne(
 {
   using
     me_WorkMemory::GetByte,
-    me_Bits::SetBitToOne,
+    me_Bits::SetBitTo,
     me_WorkMemory::SetByte;
 
   TUint_1 ByteValue;
 
   if (!GetByte(&ByteValue, ByteAddress)) return false;
-  if (!SetBitToOne(&ByteValue, BitOffset)) return false;
+  if (!SetBitTo(&ByteValue, BitOffset, 1)) return false;
   if (!SetByte(ByteValue, ByteAddress)) return false;
 
   return true;
@@ -89,13 +89,13 @@ TBool me_Bits_Workmem::SetBitToZero(
 {
   using
     me_WorkMemory::GetByte,
-    me_Bits::SetBitToZero,
+    me_Bits::SetBitTo,
     me_WorkMemory::SetByte;
 
   TUint_1 ByteValue;
 
   if (!GetByte(&ByteValue, ByteAddress)) return false;
-  if (!SetBitToZero(&ByteValue, BitOffset)) return false;
+  if (!SetBitTo(&ByteValue, BitOffset, 0)) return false;
   if (!SetByte(ByteValue, ByteAddress)) return false;
 
   return true;

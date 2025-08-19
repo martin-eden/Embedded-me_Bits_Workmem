@@ -29,6 +29,8 @@ void RunTest()
 
       for (TUint_1 RunNumber = 1; RunNumber <= NumRuns; ++RunNumber)
       {
+        Console.Print("LED blink");
+
         me_Bits_Workmem::SetBitToOne(WritePortAddress, BitOffset);
         delay(1000);
         me_Bits_Workmem::SetBitToZero(WritePortAddress, BitOffset);
