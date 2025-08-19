@@ -24,23 +24,11 @@ namespace me_Bits_Workmem
     TUint_1 BitOffset
   );
 
-  // Set bit
-  TBool SetBit(
-    TUint_1 BitValue,
+  // Set bit to value
+  TBool SetBitTo(
     TAddress ByteAddress,
-    TUint_1 BitOffset
-  );
-
-  // Set bit to one
-  TBool SetBitToOne(
-    TAddress ByteAddress,
-    TUint_1 BitOffset
-  );
-
-  // Set bit to zero
-  TBool SetBitToZero(
-    TAddress ByteAddress,
-    TUint_1 BitOffset
+    TUint_1 BitOffset,
+    TUint_1 BitValue
   );
 }
 

@@ -21,7 +21,7 @@ void RunTest()
 
     TUint_1 BitValue = 0;
 
-    me_Bits_Workmem::SetBitToOne(ModePortAddress, BitOffset);
+    me_Bits_Workmem::SetBitTo(ModePortAddress, BitOffset, 1);
 
     // Blink LED several times
     {
@@ -31,9 +31,9 @@ void RunTest()
       {
         Console.Print("LED blink");
 
-        me_Bits_Workmem::SetBitToOne(WritePortAddress, BitOffset);
+        me_Bits_Workmem::SetBitTo(WritePortAddress, BitOffset, 0);
         delay(1000);
-        me_Bits_Workmem::SetBitToZero(WritePortAddress, BitOffset);
+        me_Bits_Workmem::SetBitTo(WritePortAddress, BitOffset, 1);
         delay(1000);
       }
     }
@@ -41,7 +41,7 @@ void RunTest()
     if (!me_Bits_Workmem::GetBit(&BitValue, WritePortAddress, BitOffset))
       Console.Print("Getting bit failed");
 
-    if (BitValue != 0)
+    if (BitValue != 1)
       Console.Print("Unexpected bit value");
   }
 }

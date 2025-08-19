@@ -23,12 +23,12 @@ TBool me_Bits_Workmem::GetBit(
 )
 {
   using
-    me_WorkMemory::GetByte,
+    me_WorkMemory::GetByteFrom,
     me_Bits::GetBit;
 
   TUint_1 ByteValue;
 
-  if (!GetByte(&ByteValue, ByteAddress)) return false;
+  if (!GetByteFrom(&ByteValue, ByteAddress)) return false;
   if (!GetBit(BitValue, ByteValue, BitOffset)) return false;
 
   return true;
@@ -37,66 +37,22 @@ TBool me_Bits_Workmem::GetBit(
 /*
   Set bit to value
 */
-TBool me_Bits_Workmem::SetBit(
-  TUint_1 BitValue,
+TBool me_Bits_Workmem::SetBitTo(
   TAddress ByteAddress,
-  TUint_1 BitOffset
+  TUint_1 BitOffset,
+  TUint_1 BitValue
 )
 {
   using
-    me_WorkMemory::GetByte,
+    me_WorkMemory::GetByteFrom,
     me_Bits::SetBitTo,
-    me_WorkMemory::SetByte;
+    me_WorkMemory::SetByteTo;
 
   TUint_1 ByteValue;
 
-  if (!GetByte(&ByteValue, ByteAddress)) return false;
+  if (!GetByteFrom(&ByteValue, ByteAddress)) return false;
   if (!SetBitTo(&ByteValue, BitOffset, BitValue)) return false;
-  if (!SetByte(ByteValue, ByteAddress)) return false;
-
-  return true;
-}
-
-/*
-  Set bit to one
-*/
-TBool me_Bits_Workmem::SetBitToOne(
-  TAddress ByteAddress,
-  TUint_1 BitOffset
-)
-{
-  using
-    me_WorkMemory::GetByte,
-    me_Bits::SetBitTo,
-    me_WorkMemory::SetByte;
-
-  TUint_1 ByteValue;
-
-  if (!GetByte(&ByteValue, ByteAddress)) return false;
-  if (!SetBitTo(&ByteValue, BitOffset, 1)) return false;
-  if (!SetByte(ByteValue, ByteAddress)) return false;
-
-  return true;
-}
-
-/*
-  Set bit to zero
-*/
-TBool me_Bits_Workmem::SetBitToZero(
-  TAddress ByteAddress,
-  TUint_1 BitOffset
-)
-{
-  using
-    me_WorkMemory::GetByte,
-    me_Bits::SetBitTo,
-    me_WorkMemory::SetByte;
-
-  TUint_1 ByteValue;
-
-  if (!GetByte(&ByteValue, ByteAddress)) return false;
-  if (!SetBitTo(&ByteValue, BitOffset, 0)) return false;
-  if (!SetByte(ByteValue, ByteAddress)) return false;
+  if (!SetByteTo(ByteAddress, ByteValue)) return false;
 
   return true;
 }
