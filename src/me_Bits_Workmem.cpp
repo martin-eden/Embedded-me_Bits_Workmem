@@ -2,7 +2,7 @@
 
 /*
   Author: Martin Eden
-  Last mod.: 2025-08-19
+  Last mod.: 2025-08-26
 */
 
 #include <me_Bits_Workmem.h>
@@ -46,13 +46,13 @@ TBool me_Bits_Workmem::SetBitTo(
   using
     me_WorkMemory::GetByteFrom,
     me_Bits::SetBitTo,
-    me_WorkMemory::SetByteTo;
+    me_WorkMemory::SetByteAt;
 
   TUint_1 ByteValue;
 
   if (!GetByteFrom(&ByteValue, ByteAddress)) return false;
   if (!SetBitTo(&ByteValue, BitOffset, BitValue)) return false;
-  if (!SetByteTo(ByteAddress, ByteValue)) return false;
+  if (!SetByteAt(ByteAddress, ByteValue)) return false;
 
   return true;
 }
